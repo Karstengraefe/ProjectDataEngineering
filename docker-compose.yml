@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  python_app:
+    build: .
+    depends_on:
+      - mongodb
+    volumes:
+      - ./iot_telemetry_data.csv:/app/iot_telemetry_data.csv
+    environment:
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+
+volumes:
+  mongodb_data:

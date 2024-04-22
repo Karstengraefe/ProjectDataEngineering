@@ -1,8 +1,9 @@
+import os
 import pymongo
 
 # MongoDB connection details
-mongo_host = "localhost"
-mongo_port = 27017
+mongo_host = os.environ.get("MONGO_HOST", "localhost")
+mongo_port = int(os.environ.get("MONGO_PORT", 27017))
 mongo_db = "iot_data"
 collection_name = "sensor_data"
 
@@ -37,4 +38,5 @@ def create_collection():
 
 if __name__ == "__main__":
     create_collection()
+
 

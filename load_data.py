@@ -1,12 +1,21 @@
+import os
+import pandas as pd
 from pymongo import MongoClient
 
-client = MongoClient("localhost", 27017)
+# MongoDB connection details
+mongo_host = os.environ.get("MONGO_HOST", "localhost")
+mongo_port = int(os.environ.get("MONGO_PORT", 27017))
+
+client = MongoClient(f"mongodb://{mongo_host}:{mongo_port}/")
 db = client["iot_data"]
 collection = db["sensor_data"]
-import pandas as pd
+
+# Update the file path to reflect the correct location inside the Docker container
+csv_file_path = "iot_telemetry_data.csv" 
 
 # Read CSV file into a DataFrame
-df = pd.read_csv("iot_telemetry_data.csv")
+df = pd.read_csv(csv_file_path)
 data = df.to_dict(orient="records")
+
 for document in data:
     collection.insert_one(document)
