@@ -30,7 +30,7 @@ pip install pandas pymongo
     docker-compose up --build
     ```
 
-4. Once the containers are built, the setup_database.py script will automatically run to initialize the MongoDB database and load the data from the iot_telemetry_data.csv file.
+4. Once the containers are built, the setup_database.py script will automatically run to initialize the MongoDB database.
 
 ## Usage
 
@@ -38,4 +38,11 @@ To start the project, run the following command:
 
 ```bash
 docker-compose up
+```
+
+Load the data from the iot_telemetry_data.csv file into the Database.
+
+```bash
+python load_data.py
+```
 
