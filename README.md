@@ -1,54 +1,41 @@
-# ProjectDataEngineering
-# Sensor Data Importer
+# Project Data Engineering
 
-This project automates the process of importing sensor data into a MongoDB database using Docker and Python scripts.
+This repository contains code for a data engineering project that involves processing telemetry data from IoT devices and storing it in a MongoDB database.
 
-## Setup Instructions
+## Installation
 
-1. Clone the repository:
-git clone <repository_url>
+Before running the project, ensure you have Docker installed on your system.
+
+Install Python (version 3.9 or higher) and pip.
+
+Install the required Python packages:
+pip install pandas pymongo
+
+
+1. Clone this repository to your local machine:
+
+    ```bash
+    git clone https://github.com/Karstengraefe/ProjectDataEngineering.git
+    ```
 
 2. Navigate to the project directory:
-cd ProjectDataEngineering
 
-3. Build the Docker image:
-docker build -t sensor-data-importer .
+    ```bash
+    cd ProjectDataEngineering
+    ```
 
-4. Run the Docker container:
-docker run --name sensor-importer sensor-data-importer
+3. Build the Docker containers:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+4. Once the containers are built, the setup_database.py script will automatically run to initialize the MongoDB database and load the data from the iot_telemetry_data.csv file.
 
 ## Usage
 
-### setup_database.py
+To start the project, run the following command:
 
-This script sets up the MongoDB database by creating a collection with a predefined schema.
-
-1. To run the script, use the following command:
-python setup_database.py
-
-### load_data.py
-
-This script loads sample sensor data into the MongoDB collection.
-
-1. To run the script, use the following command:
-python load_data.py
-
-## Testing
-
-Before running the scripts, ensure that MongoDB is running.
-
-1. Test setup_database.py:
-- Run the script to create the database collection.
-- Verify in the MongoDB database that the collection `sensor_data` has been created with the correct schema.
-
-2. Test load_data.py:
-- Run the script to load sample data into the MongoDB collection.
-- Verify in the MongoDB database that the `sensor_data` collection now contains the expected data.
-
-## Notes
-
-- Ensure that MongoDB is installed and running before executing the scripts.
-- Modify the scripts or Dockerfile as needed to customize the setup for your environment.
-
-For detailed instructions, please refer to the project documentation.
+```bash
+docker-compose up
 
