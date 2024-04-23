@@ -10,7 +10,7 @@ client = MongoClient(f"mongodb://{mongo_host}:{mongo_port}/")
 db = client["iot_data"]
 collection = db["sensor_data"]
 
-# Update the file path to reflect the correct location inside the Docker container
+# file path to the csv location.
 csv_file_path = "iot_telemetry_data.csv" 
 
 # Read CSV file into a DataFrame

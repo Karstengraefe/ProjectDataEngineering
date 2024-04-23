@@ -3,6 +3,8 @@ FROM python:3.9
 # Set the working directory in the container
 WORKDIR /app
 
+# Install the required packages
+RUN pip install pymongo pandas
 
 # Copy the Python scripts into the container at /app
 COPY setup_database.py /app
@@ -15,16 +17,3 @@ ENV MONGO_PORT=27017
 
 # Command to run the Python scripts
 CMD ["python", "setup_database.py"]
-
-
-
-
-
-
-
-
-
-
-
-
-

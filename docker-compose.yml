@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+# MongoDB service
   mongodb:
     image: mongo
     ports:
@@ -8,6 +9,7 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+# Python App service
   python_app:
     build: .
     depends_on:

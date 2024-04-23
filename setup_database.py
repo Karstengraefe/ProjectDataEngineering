@@ -20,6 +20,7 @@ schema = {
     "temp": {"bsonType": "double"}
 }
 
+# Dropping existing collection to avoid an already exists error.
 def drop_collection_if_exists(db, collection_name):
     if collection_name in db.list_collection_names():
         db.drop_collection(collection_name)
